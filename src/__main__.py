@@ -28,20 +28,10 @@ def create_comment_header(header_text, character='=', header_length=79):
         header = character + " " + header_text + " " + character
 
     pre_post_pad = (header_length / 2 - len(header) / 2) - 2
-    # - 2 to take into account "# *" & "*\n" - note \n doesn't count as a
-    # character once pasted
 
-    #  math.floor in case pre_post_pad length is odd
     for i in range(math.floor(pre_post_pad)):
         header = character + header + character
 
-    # 4 Scenarios:
-    # 1 and 2: both num_char and len(string) are odd or even respectively =>
-    #          no adjustment
-    # 3 and 4: mix of odd/even => add a char to right decoration
-    # Intuition: if you subtract header_text length from header_length is
-    # the result even? if not the flooring in the loop above means we loose
-    # a char which we add below
     if (header_length - len(header_text)) % 2 != 0:
         header = header + character
 
