@@ -1,7 +1,14 @@
 # *============================= code commenter ==============================*
 import argparse
+from enum import Enum
 import pyperclip
 import math
+
+class LanguageCommentSymbol(Enum):
+    """Defines the"""
+    PYTHON = "#"
+    SQL = "--"
+    GO = "//"
 
 # *--------------------------------- helpers ---------------------------------*
 def create_comment_header(header_text: str, character: str, header_length: int) -> str:
@@ -35,7 +42,7 @@ def create_comment_header(header_text: str, character: str, header_length: int) 
     if (header_length - len(header_text)) % 2 != 0:
         header = header + character
 
-    header = "# *" + header + "*\n"
+    header = LanguageCommentSymbol.PYTHON.value +" *" + header + "*\n"
 
     return header
 

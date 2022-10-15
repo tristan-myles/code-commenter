@@ -4,14 +4,16 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
+
         {
-            "name": "Run main script",
+            "name": "Run current file with args",
             "type": "python",
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
-            "justMyCode": true
+            "justMyCode": true,
+            "args": ["-t hello"],
+            "purpose": ["debug-in-terminal"]
         }
     ]
 }
