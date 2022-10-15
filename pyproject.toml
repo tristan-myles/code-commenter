@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "code-commenter"
+version = "0.1.0"
+description = "Lightweight tool to generate decorative code comments to enhance readability"
+authors = ["Tristan Naidoo"]
+
+[tool.poetry.dependencies]
+python = "^3.7"
+pyperclip = "^1.8.2"
+
+[tool.poetry.dev-dependencies]
+black = "^22.10.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

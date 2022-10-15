@@ -3,9 +3,8 @@ import argparse
 import pyperclip
 import math
 
-
 # *--------------------------------- helpers ---------------------------------*
-def create_comment_header(header_text, character='=', header_length=79):
+def create_comment_header(header_text: str, character: str, header_length: int) -> str:
     """
     Creates a formatted string header.
 
@@ -19,8 +18,9 @@ def create_comment_header(header_text, character='=', header_length=79):
     :return: a formatted header string
     """
     if len(header_text) > header_length:
-        raise Exception("The string is longer than the number of required "
-                        "characters")
+        raise Exception(
+            "The string is longer than the number of required " "characters"
+        )
 
     if header_text == "":
         header = character + character
@@ -46,25 +46,46 @@ def parse_arguments() -> argparse.Namespace:
 
     :return: An argparse namespace
     """
-    parser = argparse.ArgumentParser("Perform operations using the "
-                                     "plant-image-segmentation code base")
+    parser = argparse.ArgumentParser(
+        "Perform operations using the " "plant-image-segmentation code base"
+    )
 
-    parser.add_argument("-l", "--length", metavar="\b", type=int,
-                        help="length of the string")
+    parser.add_argument(
+        "-l",
+        "--length",
+        metavar="\b",
+        type=int,
+        default=79,
+        help="length of the string",
+    )
 
-    parser.add_argument("-t", "--text", metavar="\b", type=str,
-                        help="header text")
+    parser.add_argument("-t", "--text", metavar="\b", type=str, help="header text")
 
-    parser.add_argument("-d", "--decoration", metavar="\b", type=str,
-                        help="character to decorate right and left of header "
-                             "text")
+    parser.add_argument(
+        "-d",
+        "--decoration",
+        metavar="\b",
+        type=str,
+        default="=",
+        help="character to decorate right and left of header " "text",
+    )
 
-    parser.add_argument("-cc", "--character", metavar="\b", type=str,
-                        default="#", help="comment character; default is #")
+    parser.add_argument(
+        "-cc",
+        "--character",
+        metavar="\b",
+        type=str,
+        default="#",
+        help="comment character; default is #",
+    )
 
-    parser.add_argument("-c", "--copy", action="store_true", default=False,
-                        help="should the output be copied to your clipboard; "
-                             "default is false")
+    parser.add_argument(
+        "-c",
+        "--copy",
+        action="store_true",
+        default=False,
+        help="should the output be copied to your clipboard; " "default is false",
+    )
 
     args = parser.parse_args()
 
@@ -75,9 +96,9 @@ def parse_arguments() -> argparse.Namespace:
 if __name__ == "__main__":
     ARGS = parse_arguments()
 
-    formatted_text = create_comment_header(ARGS.text,
-                                           character=ARGS.decoration,
-                                           header_length=ARGS.length)
+    formatted_text = create_comment_header(
+        ARGS.text, character=ARGS.decoration, header_length=ARGS.length
+    )
 
     if ARGS.copy:
         pyperclip.copy(formatted_text)
