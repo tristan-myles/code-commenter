@@ -4,14 +4,19 @@ import pyperclip
 import math
 from enum import Enum
 
+
 class LanguageCommentSymbol(Enum):
     """Defines the code comment symbol for each supported language"""
+
     PYTHON = "#"
     SQL = "--"
     GO = "//"
 
+
 # *--------------------------------- helpers ---------------------------------*
-def create_comment_header(header_text: str, character: str, header_length: int, coding_lang: str) -> str:
+def create_comment_header(
+    header_text: str, character: str, header_length: int, coding_lang: str
+) -> str:
     """
     Creates a formatted string header.
 
@@ -42,7 +47,7 @@ def create_comment_header(header_text: str, character: str, header_length: int, 
     if (header_length - len(header_text)) % 2 != 0:
         header = header + character
 
-    header = LanguageCommentSymbol[coding_lang].value +" *" + header + "*\n"
+    header = LanguageCommentSymbol[coding_lang].value + " *" + header + "*\n"
 
     return header
 
@@ -53,9 +58,7 @@ def parse_arguments() -> argparse.Namespace:
 
     :return: An argparse namespace
     """
-    parser = argparse.ArgumentParser(
-        "Generate stylized code comment headers"
-    )
+    parser = argparse.ArgumentParser("Generate stylized code comment headers")
 
     parser.add_argument(
         "-l",
@@ -114,11 +117,16 @@ def main():
     ARGS = parse_arguments()
 
     formatted_text = create_comment_header(
-        ARGS.text, character=ARGS.decoration, header_length=ARGS.length, coding_lang=ARGS.language
+        ARGS.text,
+        character=ARGS.decoration,
+        header_length=ARGS.length,
+        coding_lang=ARGS.language,
     )
 
     if ARGS.copy:
         pyperclip.copy(formatted_text)
     else:
         print(formatted_text)
+
+
 # *===========================================================================*
