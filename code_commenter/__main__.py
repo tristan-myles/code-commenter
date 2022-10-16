@@ -1,8 +1,8 @@
 # *============================= code commenter ==============================*
 import argparse
-from enum import Enum
 import pyperclip
 import math
+from enum import Enum
 
 class LanguageCommentSymbol(Enum):
     """Defines the"""
@@ -100,7 +100,7 @@ def parse_arguments() -> argparse.Namespace:
 
 
 # *---------------------------------- main -----------------------------------*
-if __name__ == "__main__":
+def main():
     ARGS = parse_arguments()
 
     formatted_text = create_comment_header(
