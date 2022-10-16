@@ -5,7 +5,7 @@ import math
 from enum import Enum
 
 class LanguageCommentSymbol(Enum):
-    """Defines the"""
+    """Defines the code comment symbol for each supported language"""
     PYTHON = "#"
     SQL = "--"
     GO = "//"
@@ -54,7 +54,7 @@ def parse_arguments() -> argparse.Namespace:
     :return: An argparse namespace
     """
     parser = argparse.ArgumentParser(
-        "Perform operations using the " "plant-image-segmentation code base"
+        "Generate stylized code comment headers"
     )
 
     parser.add_argument(
