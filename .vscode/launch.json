@@ -12,7 +12,7 @@
             "program": "${file}",
             "console": "integratedTerminal",
             "justMyCode": true,
-            "args": ["-t hello"],
+            "args": ["-t=hello", "-lang=GO"],
             "purpose": ["debug-in-terminal"]
         }
     ]

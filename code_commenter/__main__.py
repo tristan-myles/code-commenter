@@ -11,7 +11,7 @@ class LanguageCommentSymbol(Enum):
     GO = "//"
 
 # *--------------------------------- helpers ---------------------------------*
-def create_comment_header(header_text: str, character: str, header_length: int) -> str:
+def create_comment_header(header_text: str, character: str, header_length: int, coding_lang: str) -> str:
     """
     Creates a formatted string header.
 
@@ -42,7 +42,7 @@ def create_comment_header(header_text: str, character: str, header_length: int) 
     if (header_length - len(header_text)) % 2 != 0:
         header = header + character
 
-    header = LanguageCommentSymbol.PYTHON.value +" *" + header + "*\n"
+    header = LanguageCommentSymbol[coding_lang].value +" *" + header + "*\n"
 
     return header
 
@@ -64,6 +64,16 @@ def parse_arguments() -> argparse.Namespace:
         type=int,
         default=79,
         help="length of the string",
+    )
+
+    parser.add_argument(
+        "-lang",
+        "--language",
+        metavar="\b",
+        type=str,
+        choices=[e.name for e in LanguageCommentSymbol],
+        default="PYTHON",
+        help="coding language the comment is for",
     )
 
     parser.add_argument("-t", "--text", metavar="\b", type=str, help="header text")
@@ -104,12 +114,11 @@ def main():
     ARGS = parse_arguments()
 
     formatted_text = create_comment_header(
-        ARGS.text, character=ARGS.decoration, header_length=ARGS.length
+        ARGS.text, character=ARGS.decoration, header_length=ARGS.length, coding_lang=ARGS.language
     )
 
     if ARGS.copy:
         pyperclip.copy(formatted_text)
     else:
         print(formatted_text)
-
 # *===========================================================================*
