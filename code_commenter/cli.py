@@ -113,7 +113,7 @@ def parse_arguments() -> argparse.Namespace:
 
 
 # *---------------------------------- main -----------------------------------*
-def main():
+def run_cli():
     ARGS = parse_arguments()
 
     formatted_text = create_comment_header(
