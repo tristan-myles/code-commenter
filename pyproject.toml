@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "code_commenter"
-version = "0.0.1"
+version = "1.0.0"
 description = "Lightweight tool to generate decorative code comments to enhance readability"
 authors = ["Tristan Naidoo"]
 license="MIT"
